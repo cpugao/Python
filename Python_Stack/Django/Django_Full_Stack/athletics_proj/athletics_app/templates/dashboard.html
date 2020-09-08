@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+</head>
+
+<body>
+    <style>
+        .logout {
+            text-align: right;
+        }
+
+        body {
+            background-color: cornflowerblue;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: bolder;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .image1 {
+            width: 30%;
+        }
+
+        .topdiv {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .top-para {
+            margin: 20px;
+            padding: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+        }
+        th,
+        td {
+            border: 1px solid black;
+            padding: 15px;
+            margin: 20px;
+        }
+        .imagediv{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .image2{
+            width: 30%;
+        }
+    </style>
+    <p class="logout"><a href="/users/logout">Log Out</a></p>
+    <h1>Welcome to Unit Athletics</h1>
+    <h3>If it doesn't challenge you, it doesn't change you!</h3>
+    <br>
+    <hr>
+    <br>
+    <div class="container">
+        <div class="topdiv">
+            <img class="image1" src="{% static 'images/whole-person.jpg' %}" alt="whole-person" />
+            <p class="top-para">Unit Athletics is an online community where everyone is here to give or receive advice.
+                Post your workouts or
+                nutritional advice. There is no judgement here. Everyone is here to help each other accomplish any goal
+                from improved health to weight loss to better performance. All athletes in every fitness level is
+                welcome. The only
+                rule is no bullying, be respectful, and leave your ego at the door. We are a UNIT!
+            </p>
+        </div>
+        <br>
+        <div class="tablediv">
+            <h3>Athletes in Unit Athletics</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Athlete</th>
+                        <th>Gym Affilication</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                {%  for user in all_users %}
+                <tbody>
+                    <tr>
+                        <td>{{ user.first_name }} {{ user.last_name }}</td>
+                        <td>{{ user.gym }}</td>
+                        <td>
+                            <a href="/users/{{ user.id }}">View Profile</a> 
+                            {% if request.session.user_id == user.id %}
+                            | <a href="/users/{{ user.id }}/edit">Edit</a> |
+                            <a href="/users/{{ user.id }}/delete">Remove</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="lowerdiv">
+            <h1><a href="/message_board">View the Message Board</a></h1>
+            <br>
+            <div class="imagediv">
+                <img class="image2" src="{% static 'images/unicorn-deadlift.jpg' %}" alt="unicorn" />
+                <img class="image2" src="{% static 'images/panda.jpg' %}" alt="panda" /> 
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

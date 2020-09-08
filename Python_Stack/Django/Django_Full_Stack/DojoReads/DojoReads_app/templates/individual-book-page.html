@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual Book</title>
+</head>
+<body>
+    <div class="header-div">
+        <p><a href="/books">Home</a></p>
+        <p><a href="/users/logout">Log Out</a></p>
+    </div>
+    <div class="upper-div">
+        <h3>{{ book.title }}</h3>
+        <h4>Author: {{ book.author }}</h4>
+    </div>
+    <div class="reviews-div">
+        <h3>Reviews:</h3>
+        <hr>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Rating</td>
+                    <td>{{ book.rating }}/5 stars</td>
+                </tr>
+                <tr>
+                    <td><a href="/users/{{ user.id }}">{{ book.uploaded_by.first_name }}</a> says:</td>
+                    <td>{{ book.review }}</td>
+                </tr>
+                <tr>
+                    <td>Posted on {{ book.created_at }}</td>
+                    {% if request.session.user_id == book.uploaded_by.id %}
+                    <td>Delete this Review</td>
+                    {% endif %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="add-review-div">
+        <form action="/add/review" method="POST">
+            {% csrf_token %}
+            <label>Add a Review:</label>
+            <input type="textarea" name="review">
+            <label>Rating</label>
+            <select name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select> /5 stars
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+</html>

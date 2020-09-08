@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+</head>
+<body>
+    <style>
+        body{
+            text-align: center;
+            margin: 100px;
+            padding: 50px;
+            background-color: lightcoral;
+        }
+        #container{
+            text-align: center;
+            background-color: lightskyblue;
+        }
+    </style>
+    <div id="container">
+        <h1>Result</h1>
+        <p>Name: {{ request.session.name }}</p>
+        <p>Location: {{ request.session.location }}</p>
+        <p>Language: {{ request.session.language }}</p>
+        <p>Comments: {{ request.session.comments }}</p>
+    </div>
+    
+</body>
+</html>

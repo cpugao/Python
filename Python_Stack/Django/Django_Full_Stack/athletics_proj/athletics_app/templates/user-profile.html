@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+
+<body>
+    <style>
+        body{
+            background-color: cornflowerblue;
+        }
+    </style>
+    <div class="topdiv">
+        <p><a href="/dashboard">Go Back</a></p>
+        <p><a href="/users/logout">Log Out</a></p>
+    </div>
+    <h3>Name: {{ user.first_name }} {{ user.last_name }}</h3>
+    <p>Gym Affiliation: {{ user.gym }}</p>
+    <p>Email: {{ user.email }}</p>
+    <br>
+    <hr>
+    <br>
+</body>
+
+</html>

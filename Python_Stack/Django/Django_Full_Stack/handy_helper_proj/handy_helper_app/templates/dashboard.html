@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 15px;
+            margin: 20px;
+        }
+    </style>
+    <div class="header-div">
+        <h1>Hello {{ user.first_name }}!</h1>
+        <p><a href="/users/logout">Log Out</a></p>
+        <form action="/jobs/new" method="POST">
+            {% csrf_token %}
+            <button>New Job!</button>
+        </form>
+    </div>
+    <div class="container">
+        <div class="everyone-table">
+            <h3>Everyone's Jobs:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Job</th>
+                        <th>Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                {%  for job in all_jobs %}
+                <tbody>
+                    <tr>
+                        <td>{{ job.title }}</td>
+                        <td>{{ job.location }}</td>
+                        <td><a href="/jobs/{{ job.id }}">View</a> |
+                            {% if user == job.helper %}
+                            <a href="/jobs/{{ job.id }}/delete">Remove</a> |
+                            <a href="/jobs/edit/{{ job.id }}">Edit</a> 
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

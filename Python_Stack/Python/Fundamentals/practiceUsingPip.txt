@@ -1,0 +1,24 @@
+pip list - lists all the packages in the virtual environment.
+
+deactivate - deactivates the current virtual environment.
+
+pip3 list - lists all the packages intalled with Python3.
+
+call My_Environment/py3Env/Scripts/activate - reactivates the py3Env virtual environment.
+
+pip install Django==2.2.4 - intalls Django 2.2.4
+    installs Django and its contents to the environment.
+
+pip freeze - shows the installed packages in requirement form.
+
+in Desktop directory:
+    pip freeze > requirements.txt - records the environment's current package list.
+
+
+pip uninstall Django - command to uninstall Django or any package.
+
+pip show Django - output is: package not found.
+    confirms uninstallation of Django
+
+pip search Flask - searches Python for packages in the central package erpository for anything 
+    containg 'Flask'.

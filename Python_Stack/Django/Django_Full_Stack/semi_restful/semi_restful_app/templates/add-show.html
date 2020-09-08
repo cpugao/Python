@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a New Show</title>
+</head>
+<body>
+    <h1>Add a New Show</h1>
+    <a href="/shows">Go Back</a>
+    {% for err in messages %}
+    <p style="color:red;">{{ err }}</p>
+    {% endfor %}
+    <form action="/shows/create" method="POST">
+        {% csrf_token %}
+        <label>Title</label>
+        <input type="text" name="title">
+        <label>Network</label>
+        <input type="text" name="network">
+        <label>Release Date</label>
+        <input type="date" name="release_date">
+        <label>Description</label>
+        <input type="text" name="desc">
+        <button>Create</button>
+    </form>
+    
+</body>
+</html>

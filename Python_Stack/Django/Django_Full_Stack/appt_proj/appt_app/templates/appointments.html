@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments</title>
+</head>
+
+<body>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 15px;
+            margin: 20px;
+        }
+    </style>
+    <h1>Hello {{ user.first_name }}!</h1>
+    <p><a href="/users/logout">Log Out</a></p>
+    <br>
+    <form action="/appointments/new" method="POST">
+        {% csrf_token %}
+        <button>Make a new appointment!</button>
+    </form>
+    <div class="container">
+        <div class="appt-table">
+            <h3>Here are your appointments:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                {%  for appointment in all_appointments %}
+                <tbody>
+                    <tr>
+                        <td>{{ appointment.task }}</a></td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.status }}</td>
+                        <td>
+                            {% if appointment.status != "Done" %}
+                            {% if appointment.status != "Missed" %}
+                            <a href="/appointments/{{ appointment.id }}/edit">Edit</a> |
+                            <a href="/appointments/{{ appointment.id }}/delete">Remove</a>
+                            {% endif %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>

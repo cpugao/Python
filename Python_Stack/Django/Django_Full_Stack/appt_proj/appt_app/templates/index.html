@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Registration</title>
+</head>
+<body>
+    <div class="container">
+        <div class="login-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Registration</h2>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for err in messages %}
+                    <p style="color:red;">{{ err }}</p>
+                    {% endfor %}
+                    <form action="/users/create" method="POST">
+                        {% csrf_token %}
+                        <tr>
+                            <td>First Name</td>
+                            <td><input type="text" name="first_name"></td>
+                        </tr>
+                        <tr>
+                            <td>Last Name</td>
+                            <td><input type="text" name="last_name"></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><input type="text" name="email"></td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td><input type="password" name="password"></td>
+                        </tr>
+                        <tr>
+                            <td>Password Confirmation</td>
+                            <td><input type="password" name="password_confirm"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button>Submit</button></td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+        </div>
+        <div class="login-table">
+            <table>
+                <thead>
+                    <h2>Login</h2>
+                </thead>
+                <tbody>
+                    <form action="/users/login" method="POST">
+                        {% csrf_token %}
+                        <tr>
+                            <td>Email</td>
+                            <td><input type="text" name="email"></td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td><input type="password" name="password"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button>Login</button></td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

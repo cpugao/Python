@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handy Helper Login/Registration</title>
+</head>
+
+<body>
+    <style>
+        .container{
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 60%;
+        }
+        .registration-box{
+            margin: 20px;
+            padding: 20px;
+        }
+        form{
+            margin: 10px;
+            padding: 10px;
+        }
+        div{
+            padding:5px;
+        }
+    </style>
+    <h1>Welcome! Sign in to manage your jobs!</h1>
+    <div class="container">
+        <div class="registration-box">
+            <h2>Registration</h2>
+            {% for err in messages %}
+            <p style="color:red;">{{ err }}</p>
+            {% endfor %}
+            <form action="/users/create" method="POST">
+                {% csrf_token %}
+                <div>
+                    <label>First Name</label>
+                    <input type="text" name="first_name">
+                </div>
+                <div>
+                    <label>Last Name</label>
+                    <input type="text" name="last_name">
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="text" name="email">
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="password" name="password">
+                </div>
+                <div>
+                    <label>Password Confirmation</label>
+                    <input type="password" name="password_confirm">
+                </div>
+                <button>Submit</button>
+            </form>
+        </div>
+        <div class="login-box">
+            <h2>Login</h2>
+            <form action="/users/login" method="POST">
+                {% csrf_token %}
+                <div>
+                    <label>Email</label>
+                    <input type="text" name="email">
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="password" name="password">
+                </div>
+                <button>Login</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

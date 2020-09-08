@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a New Appointment</title>
+</head>
+<body>
+    {% for err in messages %}
+    <p style="color:red;">{{ err }}</p>
+    {% endfor %}
+    <div class="appointment-div">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <h3>Add an appointment</h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <form action="/appointments/add_new_appointment" method="POST">
+                    {% csrf_token %}
+                    <tr>
+                        <td>Task</td>
+                        <td><input type="text" name="task"></td>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td><input type="date" name="date" value=""></td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td><select name="status">
+                            <option value="Pending">Pending</option>
+                            <option value="Missed">Missed</option>
+                            <option value="Done">Done</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button><a href="/appointments">Cancel</a></button></td>
+                        <td><button type="submit" value="submit">Submit</button></td>
+                    </tr>
+                </form>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

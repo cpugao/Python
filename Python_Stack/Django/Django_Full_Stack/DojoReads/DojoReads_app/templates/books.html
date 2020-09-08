@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+</head>
+
+<body>
+    <div class="header-div">
+        <h1>Hello {{ user.first_name }}!</h1>
+        <h4><a href="/books/add">Add a Book and Review</a></h4>
+        <p><a href="/users/logout">Log Out</a></p>
+    </div>
+    <br>
+    <div class="reviews-div">
+        <h3>Recent Book Reviews</h3>
+        {% for book in all_books %}
+        <table>
+            <thead>
+                <tr>
+                    <th><a href="/books/{{ book.id }}">{{ book.title }}</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Rating</td>
+                    <td>{{ book.rating }}/5 stars</td>
+                </tr>
+                <tr>
+                    <td>{{ book.uploaded_by.first_name }} says:</td>
+                    <td>{{ book.review }}</td>
+                </tr>
+                <tr>
+                    <td>Posted on {{ book.created_at }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+    </div>
+    <div class="books-with-reviews-div">
+        <h3>Other Books with Reviews:</h3>
+        {{ book.reviewed_books.title }}
+    </div>
+</body>
+
+</html>

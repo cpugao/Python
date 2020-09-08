@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Trip</title>
+</head>
+
+<body>
+    <h1>Hello {{ user.first_name }}! Create a new trip!</h1>
+    <p><a href="/users/logout">Log Out</a></p>
+    {% for err in messages %}
+    <p style="color:red;">{{ err }}</p>
+    {% endfor %}
+    <div class="trip-div">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <h3>New Trip</h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <form action="/trips/add_new_trip" method="POST">
+                    {% csrf_token %}
+                    <tr>
+                        <td>Destination</td>
+                        <td><input type="text" name="destination"></td>
+                    </tr>
+                    <tr>
+                        <td>Start Date</td>
+                        <td><input type="date" name="start_date"></td>
+                    </tr>
+                    <tr>
+                        <td>End Date</td>
+                        <td><input type="date" name="end_date"></td>
+                    </tr>
+                    <tr>
+                        <td>Plan</td>
+                        <td><input type="text" name="plan"></td>
+                    </tr>
+                    <tr>
+                        <td><button><a href="/dashboard">Cancel</a></button></td>
+                        <td><button type="submit" value="submit">Submit</button></td>
+                    </tr>
+                </form>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

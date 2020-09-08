@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Books Login/Registration</title>
+</head>
+<body>
+    <h1>Login & Registration</h1>
+    <h2>Registration</h2>
+    {% for err in messages %}
+    <p style="color:red;">{{ err }}</p>
+    {% endfor %}
+    <form action="/users/create" method="POST">
+        {% csrf_token %}
+        <div>
+            <label>First Name</label>
+            <input type="text" name="first_name">
+        </div>
+        <div>
+            <label>Last Name</label>
+            <input type="text" name="last_name">
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text" name="email">
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" name="password">
+        </div>
+        <div>
+            <label>Password Confirmation</label>
+            <input type="password" name="password_confirm">
+        </div>
+        <button>Submit</button>
+    </form>
+    <br>
+    <h2>Login</h2>
+    <form action="/users/login" method="POST">
+        {% csrf_token %}
+        <div>
+            <label>Email</label>
+            <input type="text" name="email">
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" name="password">
+        </div>
+        <button>Login</button>
+    </form>
+    
+</body>
+</html>

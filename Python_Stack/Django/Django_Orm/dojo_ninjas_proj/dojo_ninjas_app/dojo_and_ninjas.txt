@@ -1,0 +1,86 @@
+Query: Create 3 new dojos
+
+Command: Dojo.objects.create()
+
+<QuerySet [{'id': 1, 'name': 'Arlington Dojo', 'city': 'Arlington', 'state': 'VA'}, {'id': 2, 'name': 'Bellevue Dojo', 'city': 'Bellevue', 'state': 'WA'}, {'id': 3, 'name': 'Boise Dojo', 'city': 'Boise', 'state': 'ID'}]>
+
+
+Query: Delete the 3 dojos you just created
+
+Command: c = Dojo.objects.get(id='id_number')
+         c.delete()
+
+>>> Dojo.objects.all()
+<QuerySet []>
+
+
+Query: Create 3 more dojos
+
+Command: Dojo.objects.create()
+
+<QuerySet [{'id': 4, 'name': 'Los Angeles Dojo', 'city': 'Los Angeles', 'state': 'CA'}, {'id': 5, 'name': 'Orange County Dojo', 'city': 'Costa Mesa', 'state': 'CA'}, {'id': 6, 'name': 'Silicon Valley Dojo', 'city': 'San Jose', 'state': 'CA'}]>
+
+
+Query: Create 3 ninjas that belong to the first dojo
+
+Command: Ninja.objects.filter(dojo_id=laDojo).values() 
+
+<QuerySet [{'id': 1, 'first_name': 'Jonathan', 'last_name': 'Finley', 'dojo_id_id': 4}, {'id': 2, 'first_name': 'Alexandra', 'last_name': 'Guardado', 'dojo_id_id': 4}, {'id': 3, 'first_name': 'Jordan', 'last_name': 'Stamps', 'dojo_id_id': 4}]>
+
+
+Query: Create 3 ninjas that belong to the second dojo
+
+Command:  Ninja.objects.filter(dojo_id=ocDojo).values()
+
+<QuerySet [{'id': 4, 'first_name': 'Chris', 'last_name': 'Lum', 'dojo_id_id': 5}, {'id': 5, 'first_name': 'Gaetan', 'last_name': 'Barthelemy', 'dojo_id_id': 5}, {'id': 6, 'first_name': 'Avi', 'last_name': 'Vasa', 'dojo_id_id': 5}]>
+
+
+Query: Create 3 ninjas that belong to the third dojo
+
+Command: Ninja.objects.filter(dojo_id=svDojo).values()
+
+<QuerySet [{'id': 7, 'first_name': 'Mona', 'last_name': 'Rivera', 'dojo_id_id': 6}, {'id': 8, 'first_name': 'Virginia', 'last_name': 'Rivera', 'dojo_id_id': 6}, {'id': 9, 'first_name': 'Romeo', 'last_name': 'Pugao', 'dojo_id_id': 6}]>
+
+
+Query: Retrieve all the ninjas from the first dojo
+
+Command: >>> for Ninja in laDojo.students.all():
+        ...     print(f"{Ninja.first_name} {Ninja.last_name}")
+
+Jonathan Finley
+Alexandra Guardado
+Jordan Stamps
+
+
+Query: Retrieve all the ninjas from the last dojo
+
+Command: >>> for Ninja in svDojo.students.all():
+        ...     print(f"{Ninja.first_name} {Ninja.last_name}")
+
+Mona Rivera
+Virginia Rivera
+Romeo Pugao
+
+
+Query: Retrieve the last ninja's dojo
+
+Command: Ninja.objects.last().dojo_id
+
+<Dojo: Dojo object (6)>
+
+
+Query: Create a new dojo
+
+Command: Dojo.objects.get(id=7).__dict__
+
+{'_state': <django.db.models.base.ModelState object at 0x0485CDA8>, 'id': 7, 'name': 'Dallas Dojo', 'city': 'Dallas', 'state': 'TX', 'desc': None}
+
+
+
+
+
+
+
+
+
+

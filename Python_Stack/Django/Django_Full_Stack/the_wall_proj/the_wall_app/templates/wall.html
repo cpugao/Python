@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wall</title>
+</head>
+<body>
+    <div id="headerdiv">
+        <h1>CodingDojo Wall</h1>
+        <h2>Welcome {{ user.first_name }}</h2>
+        <p><a href="/users/logout">Log Out</a></p>
+    </div>
+    <div class="messagediv">
+        <h3>Post a message</h3>
+        <form action="/post_message" method="POST">
+            {% csrf_token %}
+            <textarea name="message"></textarea>
+            <button>Post</button>
+        </form>
+    </div>
+    {% for message in all_messages %}
+    <div id="posted_message">
+        <p>{{ message.author.first_name }} {{message.author.last_name }}  {{ message.created_at }}</p>
+        <p>{{ message.message }}</p>
+    </div>
+    <div class="posted-comment">
+        {% for comment in message.comments.all %}
+        <p>{{ comment.author.first_name }} {{ comment.author.last_name }}  {{ comment.created_at }}
+            {% if user.id == comment.author.id %}
+            <a href="/comment/{{ comment.id }}/delete">Delete</a>
+            {% endif %}
+        </p>
+        <p>{{ comment.comment }}</p>
+        {% endfor %}
+    </div>
+    <div class="commentdiv">
+        <form action="/post_comment" method="POST">
+            {% csrf_token %}
+            <p>Comment:</p>
+            <textarea name="comment"></textarea>
+            <input type="hidden" name="message_id" value={{ message.id }}>
+            <button>Post</button>
+        </form>
+    </div>
+    {% endfor %}
+</body>
+</html>

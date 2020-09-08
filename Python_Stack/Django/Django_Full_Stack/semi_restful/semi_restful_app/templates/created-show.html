@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Created Show</title>
+</head>
+<body>
+    <a href="/shows">Go Back</a>
+    <h1>TV Show ID: {{ show.id }}</h1>
+    <h3>Title: </h3><h4>{{ show.title }}</h4>
+    <h3>Release Date: </h3><h4>{{ show.release_date }}</h4>
+    <h3>Description: </h3><h4>{{ show.desc }}</h4>
+
+    <h3>Last Updated: </h3><h4>{{ show.updated_at }}</h4>
+
+    <a href="/shows/{{ show.id }}/edit">Edit </a>| <a href="/shows/{{ show.id }}/destroy">Delete</a>
+    
+</body>
+</html>

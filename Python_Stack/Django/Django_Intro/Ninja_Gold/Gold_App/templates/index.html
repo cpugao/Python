@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold</title>
+</head>
+<body>
+    <label for="yourgold">Your Gold: </label>
+    <p> {{ request.session.gold }} </p>
+    <!-- <input type="number" id="yourgold" name="yourgold"> -->
+
+    <form action="/reset">
+        {% csrf_token %}
+        <button>Reset</button>
+    </form>
+
+    <div class="goldform">
+        <form action="/findgold" method="POST">
+            {% csrf_token %}
+            <h3>Farm</h3>
+            <p>(earns 10-20 gold)</p>
+            <button name="farm">Find Gold!</button>
+        </form>
+    </div>
+    <div class="goldform">
+        <form action="/findgold" method="POST">
+            {% csrf_token %}
+            <h3>Cave</h3>
+            <p>(earns 5-10 gold)</p>
+            <button name="cave">Find Gold!</button>
+        </form>
+    </div>
+    <div class="goldform">
+        <form action="/findgold" method="POST">
+            {% csrf_token %}
+            <h3>House</h3>
+            <p>(earns 2-5 gold)</p>
+            <button name="house">Find Gold!</button>
+        </form>
+    </div>
+    <div class="goldform">
+        <form action="/findgold" method="POST">
+            {% csrf_token %}
+            <h3>Casino</h3>
+            <p>(earns 0-50 gold)</p>
+            <button name="casino">Find Gold!</button>
+        </form>
+    </div>
+    <div>
+        <p>Activities: </p>
+        <div id="logbox">
+            <ul>
+                {% for gold in request.session.history %}
+                <li>{{ gold }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+</body>
+</html>

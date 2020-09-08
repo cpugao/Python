@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <style>
+        body{
+           text-align: center;
+           width: 100%;
+           background-color: lightskyblue; 
+        }
+        #surveyform{
+            text-align: center;
+        }
+        form{
+            margin: 10px;
+        }
+        .input{
+            padding: 10px;
+            margin: 5px;
+        }
+        button{
+            padding: 10px;
+            margin: 5px;
+        }
+
+    </style>
+    <h1>Dojo Survey</h1>
+    <div id="surveyform">
+        <form action="/result" method="POST">
+            {% csrf_token %}
+            <div class="input">
+                <label>
+                    Name:<input type="text" name="name">
+                </label>
+            </div>
+            <div class="input">
+                <label>Dojo Location:</label>
+                <select name="location">
+                    <option value="Arlinton, VA">Arlington, VA</option>
+                    <option value="Bellevue, WA">Bellevue, WA</option>
+                    <option value="Boise, ID">Boise, ID</option>
+                    <option value="Chicago, IL">Chicago, IL</option>
+                    <option value="Dallas, TX">Dallas, TX</option>
+                    <option value="Los Angeles, CA">Los Angeles, CA</option>
+                    <option value="Oakland, CA">Oakland, CA</option>
+                    <option value="Orange Counnty, CA">Orange County, CA</option>
+                    <option value="Silicon Valley, CA">Silicon Valley, CA</option>
+                    <option value="Tulsa, OK">Tulsa, OK</option>
+                    <option value="Online">Online</option>
+                </select>
+            </div>
+            <div class="input">   
+                <label>Favorite Language:</label>
+                <select name="language">
+                    <option value=".NET/C#">.NET/C#</option>
+                    <option value="Ruby on Rails">Ruby on Rails</option>
+                    <option value="Python">Python</option>
+                    <option value="MEAN">MEAN</option>
+                    <option value="Java">Java</option>
+                    <option value="Mern">Mern</option>
+                    <option value="iOS">iOS</option>
+                    <option value="Lamp">Lamp</option>
+                </select>
+            </div>
+            <div class="input">
+                <label>Comments (optional):</label>
+                <textarea name="comments"></textarea>
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+</html>

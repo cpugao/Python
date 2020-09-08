@@ -1,0 +1,94 @@
+*{
+    margin:0px;
+    padding:0px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.image3 {
+    width: 15%;
+}
+
+h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.headerdiv {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container{
+    width:875px;
+    margin: auto;
+    background-color: cornflowerblue;
+    padding: 20px;
+}
+
+.post-area{
+    width: 700px;
+    background-color: whitesmoke;
+    margin-top: 5px;
+    padding: 5px;
+    border: solid 2px black;
+}
+
+.main{
+    width: 100%;
+    padding: 50px;
+}
+
+.message textarea{
+    width: 750px;
+    height: 100px;
+    border: solid 1px black;
+    padding: 2px;
+    resize: none;
+}
+
+.message button {
+    margin-top: 5px;
+    margin-left: 601px;
+    margin-bottom: 10px;
+    padding:2px;
+    color: white;
+    background-color: darkslateblue;
+    box-shadow: 1px 1px black;
+}
+
+.message-area {
+    margin-left: 10px;
+}
+
+.message-div{
+    margin-bottom: 8px;
+}
+
+.comment-div{
+    width: 655px;
+    background-color: lightskyblue;
+    margin-left: 20px;
+    padding: 5px;
+}
+.comment-area, .comment {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.comment {
+    margin-left: 20px;
+}
+.comment textarea {
+    width: 650px;
+    height: 70px;
+    padding: 2px;
+    border: solid 1px black;
+    resize: none;
+}
+.comment button {
+    margin-left: 544px;
+    margin-bottom: 5px;
+    padding: 2px;
+    color: white;
+    background-color: cornflowerblue;
+    box-shadow: 1px 1px black;
+}
